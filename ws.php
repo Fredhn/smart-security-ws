@@ -16,14 +16,7 @@ $result = RESULT_ERROR;
 
 if(isset($action))
 {
-	//$username = $_POST["username"];
-	//$pwd = $_POST["password"];
-	//$contract = $_POST["contract"];
-	//$name = $_POST["name"];
-	//$doc = $_POST["doc"];
 	$username = $_POST["username"];
-	//$pwd = $_POST["password"];
-	//$mac = $_POST["mac"];
 	
 	switch($action)
 	{
@@ -32,6 +25,7 @@ if(isset($action))
 			$name = $_POST["name"];
 			$doc = $_POST["doc"];
 			$mac = $_POST["mac"];
+			
 			if (isExistUser($cnn, $username))
 			{
 				$result = RESULT_USER_EXISTS;
@@ -44,6 +38,7 @@ if(isset($action))
 			break;
 		case ACTION_LOGIN:
 			$pwd = $_POST["password"];
+			
 			if(login($cnn, $username,$pwd))
 			{
 				$result = RESULT_SUCCESS;
@@ -53,8 +48,7 @@ if(isset($action))
 				$result = RESULT_ERROR;
 			}
 			break;
-		case ACTION_LOAD_MODULES:
-		
+		case ACTION_LOAD_MODULES:	
 			loadModules($cnn, $username);
 			$result = RESULT_SUCCESS;
 			break;
